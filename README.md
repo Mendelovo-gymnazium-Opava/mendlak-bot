@@ -1,5 +1,4 @@
 # Mendlák Discord bot
-[![Build Status]
 
 
 ## Popis
