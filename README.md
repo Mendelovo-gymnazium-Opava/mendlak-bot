@@ -1,4 +1,6 @@
 # Mendlák Discord bot
+![bolesti](https://github.com/Mendelovo-gymnazium-Opava/mendlak-bot/blob/master/badges/naps%C3%A1no-v-bolestech.svg)
+![bolesti?](https://github.com/Mendelovo-gymnazium-Opava/mendlak-bot/blob/master/badges/obsahuje-primitivn%C3%AD-chyby.svg)
 
 
 ## Popis
