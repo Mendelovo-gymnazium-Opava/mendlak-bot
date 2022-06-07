@@ -7,9 +7,9 @@ const fs = require('fs'); //Filesystem functionality
 
 exports.addRandomXP = addRandomXP;
 
-function addRandomXP(id){
+function addRandomXP(id){   //Adds xp to user
     filelocation = "userdata/" + id + ".json";
-    if(!fs.existsSync(filelocation)){ //User has no file
+    if(!fs.existsSync(filelocation) && (id != 982556482258231296)){ //User has no file.
         console.log("no file attached to userid " + id + ", generating new one");
 
         data = {xp:0}; //Default data
@@ -23,19 +23,29 @@ function addRandomXP(id){
         delete data;
         addRandomXP(id); //That's one level of recursion more than I would like (1)
        }
-    else {
+    else if(id != 982556482258231296){  //User has file
         //Parse the file
-        ufile = fs.readFileSync(filelocation);
-        udata = JSON.parse(ufile);
+        udata = JSON.parse(fs.readFileSync(filelocation));
 
         //Update xp data into file
-        udata.xp += EM.getRandomInt(0,10);
+        udata.xp += EM.getRandomInt(0,25);
         fs.writeFileSync(filelocation,JSON.stringify(udata, null, "\t"));
 
-        delete ufile;
         delete udata;
     }
     delete filelocation;
+}
+
+exports.getXPData = getXPData;
+
+function getXPData(id){ //Gets xp from user
+    filelocation = "userdata/" + id + ".json";
+    udata = JSON.parse(fs.readFileSync(filelocation));
+
+    return udata;
+
+    delete filelocation;
+    delete udata;
 }
 
 

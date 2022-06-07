@@ -68,8 +68,10 @@ client.on('messageCreate', msg => {
         
         switch(args[0]){
 
-            case "":
-
+            case "level":
+                const levelData = MB.getXPData(uid);
+                a = levelData.xp;
+                msg.channel.send(a + "xp");
                 break;
 
         }
