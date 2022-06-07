@@ -15,4 +15,5 @@ XP systém
 ## Vývojářské funkce
 
 Snadné nastavení
+
 Detailně okomentovaný kód
