@@ -57,33 +57,42 @@ console.timeEnd('init time');
 
 
 //Message processing code
+try {
 
-client.on('messageCreate', msg => {
+    client.on('messageCreate', msg => {
 
-    uid = msg.author.id;
-    let args = msg.content.substring(1).split(" "); //Splits message into managable substrings
-
-    //Command message processing code
-    if(msg.content.startsWith(prefix)){
-        
-        switch(args[0]){
-
-            case "level":
-                const levelData = MB.getXPData(uid);
-                a = levelData.xp;
-                msg.channel.send(a + "xp");
+        uid = msg.author.id;
+        let args = msg.content.substring(1).split(" "); //Splits message into managable substrings
+        //Command message processing code
+        if(msg.content.startsWith(prefix)){
+            
+            switch(args[0]){
+    
+                case "level":   //Shows level data and progress to next level
+                    const xpData = MB.getXPData(uid);
+    
+    
+                    msg.channel.send(xpData + "xp");
                 break;
-
+    
+                case "help":
+                    msg.channel.send({embeds: [MB.generateHelp(0,0)]})
+                break;
+    
+            }
+    
+            
+    
         }
+        //End of command message processing code
+    
+        if (!xpset.has(uid)){
+            MB.addRandomXP(uid); //Adds random xp for message
+            xpset.add(uid); //Adds id to xpset
+        }
+    
+    })
 
-        
-
-    }
-    //End of command message processing code
-
-    if (!xpset.has(uid)){
-        MB.addRandomXP(uid); //Adds random xp for message
-        xpset.add(uid); //Adds id to xpset
-    }
-
-})
+} catch (error) {
+    console.warn(error);
+}

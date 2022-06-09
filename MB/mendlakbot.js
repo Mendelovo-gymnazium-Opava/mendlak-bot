@@ -42,7 +42,7 @@ function getXPData(id){ //Gets xp from user
     filelocation = "userdata/" + id + ".json";
     udata = JSON.parse(fs.readFileSync(filelocation));
 
-    return udata;
+    return udata.xp;
 
     delete filelocation;
     delete udata;
@@ -51,3 +51,18 @@ function getXPData(id){ //Gets xp from user
 
 
 //End of XP system code
+
+//Help command code
+
+exports.generateHelp = generateHelp;
+
+function generateHelp(msg, args) {
+    const defaultHelpEmbed = new Discord.MessageEmbed()
+        .setColor('#739122')
+        .setTitle('Pomoc s příkazy')
+        .setURL('https://github.com/Mendelovo-gymnazium-Opava/mendlak-bot')
+        .setThumbnail('https://avatars.githubusercontent.com/u/104827093?s=400&u=65f2b98c5ceacc665282875624cb184bc9a79b4a&v=4')
+        .addField('level','Poskytne úroveň a ukáže postup na další úroveň', true);
+    
+    return defaultHelpEmbed;
+}
