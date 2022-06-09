@@ -60,12 +60,10 @@ console.timeEnd('init time');
 try {
 
     client.on('messageCreate', msg => {
-
         uid = msg.author.id;
-        let args = msg.content.substring(1).split(" "); //Splits message into managable substrings
         //Command message processing code
         if(msg.content.startsWith(prefix)){
-            
+            let args = msg.content.toLowerCase.substring(1).split(" "); //Splits message into managable substrings
             switch(args[0]){
     
                 case "level":   //Shows level data and progress to next level
